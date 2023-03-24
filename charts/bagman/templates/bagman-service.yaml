@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: bagman
+  name: bagman
+spec:
+  ports:
+    - name: "8080"
+      port: 8080
+      targetPort: 8080
+    - name: "9464"
+      port: 9464
+      targetPort: 9464
+  selector:
+    io.kompose.service: bagman
+status:
+  loadBalancer: {}

@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: bagman
+  name: bagman
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: bagman
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.network/docker-default: "true"
+        io.kompose.service: bagman
+    spec:
+      containers:
+        - env:
+            - name: DOORMAN_URL
+              value: http://doorman:8080
+            - name: OTLP_METRICS_EXPORT_URL
+              value: {{ .Values.otel.metrics.url | default "http://otel-collector:4318/v1/metrics" | quote }}
+            - name: OTLP_TRACES_EXPORT_URL
+              value: {{ .Values.otel.traces.url | default "http://otel-collector:4318/v1/traces" | quote }}
+            - name: REDIS_HOST
+              value: {{ .Values.redis.host | default "redis" | quote }}
+            - name: REDIS_PORT
+              value: {{ .Values.redis.port | default "6379" | quote }}
+          image: ghcr.io/sheunglaili/bagman:0.0.2
+          name: bagman
+          ports:
+            - containerPort: 8080
+            - containerPort: 9464
+          resources: {}
+      restartPolicy: Always
+status: {}

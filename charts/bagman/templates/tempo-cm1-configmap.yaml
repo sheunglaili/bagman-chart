@@ -1,0 +1,9 @@
+{{- if eq .Values.grafana.install true }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: tempo
+  name: tempo-cm1
+{{ end }}

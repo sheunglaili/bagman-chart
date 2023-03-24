@@ -1,0 +1,16 @@
+redis:
+  install: false
+  host:
+  port:  
+grafana:
+  install: false
+  mimir:
+    url: 
+  tempo: 
+    url: 
+otel:
+  install: false
+  metrics:
+    url: 
+  traces:
+    url:

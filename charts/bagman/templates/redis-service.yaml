@@ -1,0 +1,20 @@
+{{- if eq .Values.redis.install true }}
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    traefik.enable: "false"
+  creationTimestamp: null
+  labels:
+    io.kompose.service: redis
+  name: redis
+spec:
+  ports:
+    - name: "6379"
+      port: 6379
+      targetPort: 6379
+  selector:
+    io.kompose.service: redis
+status:
+  loadBalancer: {}
+{{ end }}

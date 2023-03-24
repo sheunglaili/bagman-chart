@@ -1,0 +1,30 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: bagman-ingress
+  namespace: {{ .Release.Namespace }}
+spec:
+  entryPoints:
+    - web
+  routes:
+  - match: PathPrefix(`/socket.io`)
+    kind: Rule
+    middlewares:                   
+    - name: cors            
+      namespace: {{ .Release.Namespace }}   
+    services:
+    - name: bagman
+      port: 8080
+      passHostHeader: true
+      sticky:
+        cookie:
+          httpOnly: true
+          name: cookie
+  - match: PathPrefix(`/auth`)
+    kind: Rule
+    middlewares:
+    - name: auth-stripprefix
+      namespace: {{ .Release.Namespace }}
+    services:
+    - name: doorman
+      port: 8080
