@@ -1,13 +1,12 @@
 redis:
   install: false
   host:
-  port:  
+  port: 
+  password: 
 grafana:
   install: false
-  mimir:
-    url: 
-  tempo: 
-    url: 
+  instanceId: 
+  apiKey: 
 otel:
   install: false
   metrics:
