@@ -2,6 +2,17 @@ apiVersion: v1
 entries:
   bagman:
   - apiVersion: v1
+    created: "2023-03-25T21:49:24.001102582Z"
+    description: Helm chart for installing real time infrastructure - bagman
+    digest: c205b0d815bbc90f18c46b91ed37e10a17789a7e700c1924271a6e6d3cd16e3a
+    keywords:
+    - bagman
+    - real-time
+    name: bagman
+    urls:
+    - https://github.com/sheunglaili/bagman-chart/releases/download/bagman-0.0.3/bagman-0.0.3.tgz
+    version: 0.0.3
+  - apiVersion: v1
     created: "2023-03-25T18:23:02.943092576Z"
     description: Helm chart for installing real time infrastructure - bagman
     digest: d9102e3da63342b88abc32a6f75dbb7362e7852d9064e3ff8e33c28fa596ae60
@@ -23,4 +34,4 @@ entries:
     urls:
     - https://github.com/sheunglaili/bagman-chart/releases/download/bagman-0.0.1/bagman-0.0.1.tgz
     version: 0.0.1
-generated: "2023-03-25T18:23:02.943108576Z"
+generated: "2023-03-25T21:49:24.001116682Z"
