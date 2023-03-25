@@ -2,6 +2,7 @@ redis:
   install: false
   host:
   port: 
+  username:
   password: 
 grafana:
   install: false

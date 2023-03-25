@@ -34,13 +34,15 @@ spec:
               value: {{ .Values.redis.host | default "redis" | quote }}
             - name: REDIS_PORT
               value: {{ .Values.redis.port | default "6379" | quote }}
-            {{- if .Values.redis.password }}
+            {{- if .Values.redis.username }}
             - name: REDIS_USERNAME
-              value: "default"
+              value: {{ .Values.redis.username | quote }}
+            {{ end }}
+            {{- if .Values.redis.password }}
             - name: REDIS_PASSWORD
               value: {{ .Values.redis.password | quote }}
             {{ end }}
-          image: ghcr.io/sheunglaili/bagman:0.0.2
+          image: ghcr.io/sheunglaili/bagman:0.0.3
           name: bagman
           ports:
             - containerPort: 8080
