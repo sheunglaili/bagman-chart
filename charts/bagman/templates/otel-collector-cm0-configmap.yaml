@@ -14,8 +14,8 @@ data:
 
     exporters:
       otlphttp:
-        traces_endpoint: {{ .Values.grafana.tempo.url | default "http://tempo:4318/v1/traces" | quote }}
-        metrics_endpoint: {{ .Values.grafana.mimir.url | default "http://mimir:9009/otlp/v1/metrics" | quote }}
+        traces_endpoint: {{ .Values.otel.traces.url | default "http://tempo:4318/v1/traces" | quote }}
+        metrics_endpoint: {{ .Values.otel.metrics.url | default "http://mimir:9009/otlp/v1/metrics" | quote }}
 
     service: 
       pipelines:
