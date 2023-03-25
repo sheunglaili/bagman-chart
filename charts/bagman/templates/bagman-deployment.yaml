@@ -28,7 +28,7 @@ spec:
               value: {{ .Values.otel.traces.url | default "http://otel-collector:4318/v1/traces" | quote }}
             {{- if and (.Values.grafana.instanceId) (.Values.grafana.apiKey)}}
             - name: OTEL_EXPORTER_OTLP_HEADERS
-              value: Authorization=Basic {{ printf "%s:%s" .Values.grafana.instanceId .Values.grafana.apiKey | b64enc }}
+              value: Authorization=Basic {{ printf "%d:%s" .Values.grafana.instanceId .Values.grafana.apiKey | b64enc }}
             {{ end }}
             - name: REDIS_HOST
               value: {{ .Values.redis.host | default "redis" | quote }}
