@@ -4,6 +4,7 @@ redis:
   port: 
   username:
   password: 
+  tls: 
 grafana:
   install: false
   instanceId: 

@@ -35,7 +35,11 @@ spec:
             - name: REDIS_PASSWORD
               value: {{ .Values.redis.password | quote }}
             {{ end }}
-          image: ghcr.io/sheunglaili/doorman:0.3.0
+            {{- if .Values.redis.tls }}
+            - name: REDIS_TLS
+              value: {{ .Values.redis.tls | quote }}
+            {{ end }}
+          image: ghcr.io/sheunglaili/doorman:0.3.1
           name: doorman
           ports:
             - containerPort: 8080
