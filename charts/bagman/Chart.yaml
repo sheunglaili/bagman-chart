@@ -1,6 +1,6 @@
 name: bagman
 description: Helm chart for installing real time infrastructure - bagman
-version: 0.0.8
+version: 0.0.9
 apiVersion: v1
 keywords:
   - bagman
