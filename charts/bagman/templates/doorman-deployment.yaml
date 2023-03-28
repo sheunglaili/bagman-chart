@@ -23,6 +23,12 @@ spec:
         - env:
             - name: PORT
               value: "8080"
+            - name: OTLP_TRACES_EXPORT_URL
+              value: {{ .Values.otel.traces.url | default "http://otel-collector:4318/v1/traces" | quote }}
+            {{- if and (.Values.grafana.instanceId) (.Values.grafana.apiKey)}}
+            - name: OTEL_EXPORTER_OTLP_HEADERS
+              value: Authorization=Basic {{ printf "%d:%s" .Values.grafana.instanceId .Values.grafana.apiKey | b64enc }}
+            {{ end }}
             - name: REDIS_HOST
               value: {{ .Values.redis.host | default "redis" | quote }}
             - name: REDIS_PORT
@@ -39,7 +45,7 @@ spec:
             - name: REDIS_TLS
               value: {{ .Values.redis.tls | quote }}
             {{ end }}
-          image: ghcr.io/sheunglaili/doorman:0.3.1
+          image: ghcr.io/sheunglaili/doorman:0.3.2
           name: doorman
           ports:
             - containerPort: 8080
