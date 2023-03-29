@@ -29,21 +29,9 @@ spec:
             - name: OTEL_EXPORTER_OTLP_HEADERS
               value: Authorization=Basic {{ printf "%d:%s" .Values.grafana.instanceId .Values.grafana.apiKey | b64enc }}
             {{ end }}
-            - name: REDIS_HOST
-              value: {{ .Values.redis.host | default "redis" | quote }}
-            - name: REDIS_PORT
-              value: {{ .Values.redis.port | default "6379" | quote }}
-            {{- if .Values.redis.username }}
-            - name: REDIS_USERNAME
-              value: {{ .Values.redis.username | quote }}
-            {{ end }}
-            {{- if .Values.redis.password }}
-            - name: REDIS_PASSWORD
-              value: {{ .Values.redis.password | quote }}
-            {{ end }}
-            {{- if .Values.redis.tls }}
-            - name: REDIS_TLS
-              value: {{ .Values.redis.tls | quote }}
+           {{ if .Values.redis.url }}
+            - name: REDIS_URL
+              value: {{ .Values.redis.url }}
             {{ end }}
           image: ghcr.io/sheunglaili/doorman:0.3.3
           name: doorman
