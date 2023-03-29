@@ -15,3 +15,7 @@ otel:
     url: 
   traces:
     url:
+traefik:
+  service:
+    annotations:
+      service.beta.kubernetes.io/do-loadbalancer-http2-ports: "80"
