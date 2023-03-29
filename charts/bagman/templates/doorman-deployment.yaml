@@ -33,7 +33,7 @@ spec:
             - name: REDIS_URL
               value: {{ .Values.redis.url }}
             {{ end }}
-          image: ghcr.io/sheunglaili/doorman:0.3.3
+          image: ghcr.io/sheunglaili/doorman:0.3.4
           name: doorman
           ports:
             - containerPort: 8080

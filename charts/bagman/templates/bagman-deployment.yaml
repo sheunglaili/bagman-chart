@@ -34,7 +34,7 @@ spec:
             - name: REDIS_URL
               value: {{ .Values.redis.url }}
             {{ end }}
-          image: ghcr.io/sheunglaili/bagman:0.0.4
+          image: ghcr.io/sheunglaili/bagman:0.0.5
           name: bagman
           ports:
             - containerPort: 8080
